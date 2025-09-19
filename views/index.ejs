@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <!-- Link Navigasi -->
+    <a href="/">Home</a> | <a href="about">About</a> | <a href="contact">Contact</a>
+
+    <h1>Home</h1>
+    <p>Ini halaman Home</p>
+
+    <!-- Berita -->
+    <% news.forEach(item => { %>
+        <%= item.title %> <br>
+        <%= item.content %> <hr>
+    <% }) %>
+</body>
+</html>

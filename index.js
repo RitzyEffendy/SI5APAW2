@@ -1,8 +1,12 @@
 const express = require("express"); // Impor module express
+const expressLayout = require("express-ejs-layouts"); // Import express-ejs-layouts
+
 const app = express(); // Buat express application
 const port = 3000; // Port yang akan digunakan
 
 app.set('view engine', 'ejs')
+app.use(expressLayout)
+app.use(express.static("public"))
 
 app.get("/", (req, res) => {
     // res.send("Hello world");
@@ -11,18 +15,18 @@ app.get("/", (req, res) => {
         {id: 2, title: "Kampung SI 2025", content: "..."},
         {id: 3, title: "Stand baru kantin MDP : Bakso Meletup", content: "..."}
     ];
-    res.render('index', {news});
+    res.render('index', {news, title: "Home", layout: "main"});
 })
 
 app.get("/about", (req, res) => {
     // res.send("About Us");
-    res.render('about');
+    res.render('about', {title: "About Us", layout:"main"});
 })
 
 app.get("/contact", (req, res) => {
     // res.send("Contact Us");
     // res.sendFile(__dirname + "/contact.html");
-    res.render('contact');
+    res.render('contact', {title: "Contact Us", layout: "main"});
 })
 
 app.get("/mahasiswa", (req, res) => {
@@ -59,7 +63,7 @@ app.get("/prodi", (req, res) => {
         {kode: 20, nama: "Manajemen", singkatan: "MJ", fakultas: "Fakultas Ekonomi dan Bisnis"},
         {kode: 21, nama: "Akuntansi", singkatan: "AK", fakultas: "Fakultas Ekonomi dan Bisnis"},
     ];
-    res.render('prodi', {prodi, title: "Program Studi"});
+    res.render('prodi', {prodi, title: "Program Studi", layout: "main"});
 })
 
 // Jika route yang diakses tidak terdaftar, maka ditampilkan "Not Found"

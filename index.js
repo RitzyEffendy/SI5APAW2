@@ -11,9 +11,11 @@ app.use(express.static("public"))
 app.get("/", (req, res) => {
     // res.send("Hello world");
     const news = [
-        {id: 1, title: "Belajar Express", content: "..."},
+        {id: 1, title: "Webinar World of AI Terbaru", content: "..."},
         {id: 2, title: "Kampung SI 2025", content: "..."},
-        {id: 3, title: "Stand baru kantin MDP : Bakso Meletup", content: "..."}
+        {id: 3, title: "Stand baru kantin MDP : Bakso Meletup", content: "..."},
+        {id: 4, title: "Webinar NVIDIA Indonesia Terbaru", content: "..."},
+        {id: 5, title: "Stand baru kantin MDP : Mie Be-Gocoan", content: "..."}
     ];
     res.render('index', {news, title: "Home", layout: "main"});
 })
@@ -62,6 +64,8 @@ app.get("/prodi", (req, res) => {
         {kode: 27, nama: "Teknik Elektro", singkatan: "TE", fakultas: "Fakultas Ilmu Komputer dan Rekayasa"},
         {kode: 20, nama: "Manajemen", singkatan: "MJ", fakultas: "Fakultas Ekonomi dan Bisnis"},
         {kode: 21, nama: "Akuntansi", singkatan: "AK", fakultas: "Fakultas Ekonomi dan Bisnis"},
+        {kode: 98, nama: "Psikologi", singkatan: "PS", fakultas: "Fakultas Humanis"},
+        {kode: 99, nama: "DKV", singkatan: "DK", fakultas: "Fakultas Desain Komputer"},
     ];
     res.render('prodi', {prodi, title: "Program Studi", layout: "main"});
 })

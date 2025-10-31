@@ -1,0 +1,17 @@
+// Import model Mahasiswa
+const mahasiswa = require("../models/mahasiswa")
+
+// Fungsi untuk mengambil semua isi collection mahasiswa
+const getAllMahasiswa = async (req, res) => {
+    try {
+        // GET collection mahasiswa
+        // const result = await mahasiswa.find().populate("prodi_id", "nama prodi")
+        const result = await mahasiswa.find().populate([{path:"prodi_id", select: "nama singkatan", populate:{path:"fakultas_id", select:"nama"}}])
+        res.status(200).json(result)
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+// Export
+module.exports = {getAllMahasiswa}
